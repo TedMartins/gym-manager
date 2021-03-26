@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-color: rgba(255,140,0, 0.8);
+    --title: rgb(255,33,10, 0.9);
+    --background: rgb(238,238,238);
+    --header-background: rgba(200, 200, 200, 0.4);
+    --link-hover: rgb(72,61,139);
+    --link: rgb(35, 35,35);
+    --details: rgb(15, 15, 15);
+    --secundary-color: rgba(150, 10, 100, 1);
+    --third-color: rgb(255, 200, 20);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: var(--header-background);
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    box-sizing: border-box;
+
+}
+
+.links {
+    font-size: 1.4rem;
+    opacity: 1;
+}
+
+.links a + a {
+    margin-left: 2rem;
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--link);
+    position: relative;
+}
+
+.links a.active {
+    font-weight: bold;
+    color: var(--secundary-color);
+}
+
+.links a:hover {
+    color: var(--link-hover);
+}
+
+.links a::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: var(--secundary-color);
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+}
+
+.links a:hover::after {
+    width: 100%;
+    transition: width 400ms ease-in-out;
+}
+
+/* ==> Card <========== */
+
+.card {
+    background-color: var(--background) ;
+    width: 800px;
+    min-height: 400px;
+
+    margin: 3rem auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    box-shadow: 2px 2px 6px -2px rgba(0,0,0, 0.4);
+
+    /* => animation <==== */
+    opacity: 0;
+    animation-name: up;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
+    
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translate(1rem) ;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==> Details <========== */
+
+.details {
+    padding: 2rem;
+}
+
+
+.details .item {
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
+    padding: 1rem 0;
+}
+
+.details .item:last-child {
+    border: none;
+}
+
+.details h3,
+.details .item div:nth-child(1){
+    color: var(--title);
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.8px;
+    font-weight: normal;
+}
+
+.details .item div:nth-child(2){
+    color: var(--details);
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+
+.details h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--secundary-color);
+    font-size: 1.5rem;
+}
+
+.details .item span {
+    padding: 8px 1rem;
+    color: var(--secundary-color);
+    background-color: var(--third-color);
+    border-radius: 8px;
+    margin-top: 8px;
+    letter-spacing: 0.8px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* ==> Form <========== */
+
+input,
+select {
+    width: 100%;
+    height: 1.4rem;
+    outline: none;
+    color: var(--details);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+input[type="radio"] {
+    width: initial;
+    margin-right: 4px;
+}
+
+input::placeholder {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+button[type="submit"],
+a.button {
+    padding: 0.5rem 2rem;
+    background-color: var(--third-color);
+    border-radius: 4px;
+    margin-top: 2rem;
+    width: 100%;
+    color: var(--secundary-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+button[type="submit"]:hover,
+a.button:hover {
+    background-color: var(--secundary-color);
+    color: var(--third-color);
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+a.button {
+    display: block;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+}
+
+.form-delete button[type="submit"] {
+    padding: 0.5rem 2rem;
+    background-color: var(--title);
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    width: 100%;
+    color: var(--background);
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.form-delete button[type="submit"]:hover {
+    background-color: var(--secundary-color);
+    color: var(--third-color);
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+/* ==> Index <========== */
+
+.table-container {
+    display: block;
+    padding: 3rem;
+    box-sizing: border-box;
+}
+
+.table-container table {
+    border-spacing: 0;
+}
+
+.table-container thead tr th {
+    text-align: left;
+}
+
+.table-container table td,
+.table-container table th {
+    padding: 5px;
+    border-bottom: 1px solid var(--header-background);
+    text-transform: capitalize;
+}
+
+.table-container thead th {
+    text-transform: uppercase;
+    color: var(--title);
+    font-size: 14px;
+}
+
+.table-container table td img {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    box-shadow: 3px 1px 6px -4px black;
+    border: 2px solid white;
+}
+
+.table-container table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-container table tbody td:last-child a {
+    background-color: var(--third-color);
+    text-decoration: none;
+    padding: 8px 24px;
+    color: var(--secundary-color);
+    transition: 0.7s;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.table-container table tbody td:last-child a:hover {
+    background-color: var(--secundary-color);
+    color: var(--third-color);
+}
+
+.table-container thead tr th:last-child,
+.table-container tbody tr td:last-child {
+    text-align: center;
+}
+
+#lowercase {
+    text-transform: lowercase;
+}
+
+/* ==> Filters <========== */
+
+.header {
+    display: grid;
+    grid-template-columns: 1.3fr 1.7fr;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: -1rem;
+}
+
+.table-container .header a {
+    margin: 0;
+    width: 200px;
+}
+
+.table-container .header form {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    align-items: center;
+    grid-gap: 8px;
+}
+
+.table-container .header form input {
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    height: 2.5rem;
+    border-radius: 4px;
+}
+
+.table-container .header form button {
+    margin: 0;
+}
+
+/* ==> Pagination <========== */
+
+.table-container {
+    display: grid;
+    grid-template: 64px 1fr 16px / 1fr;
+}
+
+.table-container .header {
+    margin: 0;
+    align-self: start;
+}
+
+.table-container .pagination {
+    margin: 0;
+    align-self: end;
+    justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+    color: var(--details);
+    border: 1px solid var(--header-background);
+    padding: 6px;
+    margin: 4px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    color: var(--secundary-color);
+    background-color: var(--primary-color);
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0px;
+    transition: 0.3s;
+    padding: 8px;
+}

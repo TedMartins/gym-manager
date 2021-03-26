@@ -1,0 +1,57 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="card table-container">
+
+    <div class="header">
+        <div>
+            <a href="/members/create" class="button">ADD NEW</a>
+        </div>
+
+        <form action="/members" method="GET">
+            <input 
+                type="text"
+                name="filter"
+                placeholder="name or email"
+                value="{{ filter }}"
+            >
+        <button type="submit">Filter</button>
+        </form>
+    </div>
+
+    <table width="100%">
+        <thead>
+            <tr>
+                <th colspan="2">Member</th>
+                <th>Email</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td><img src="{{ member.avatar_url }}" alt=""></td>
+                <td>{{ member.name }}</td>
+                <td id="lowercase">{{ member.email }}</td>
+                <td>{{ member.height }}cm</td>
+                <td>{{ member.weight }}kg</td>
+                <td><a href="/members/{{member.id}}">Show</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination" 
+        data-page={{pagination.page}}
+        data-total={{pagination.total}}
+        data-filter={{filter}}
+    ></div>
+
+</div>
+
+<script src="../assets/js/pagination.js" async></script>
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="card table-container">
+
+    <div class="header">
+        <div>
+            <a href="/instructors/create" class="button">ADD NEW</a>
+        </div>
+
+        <form action="/instructors" method="GET">
+            <input 
+                type="text"
+                name="filter"
+                placeholder="name or speciality"
+                value="{{ filter }}"
+            >
+        <button type="submit">Filter</button>
+        </form>
+    </div>
+
+    <table width="100%">
+        <thead>
+            <tr>
+                <th colspan="2">Instructor</th>
+                <th>Specialities</th>
+                <th>Goers</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instructor in instructors %}
+            <tr>
+                <td><img src="{{ instructor.avatar_url }}" alt=""></td>
+                <td>{{ instructor.name }}</td>
+                <td>{{ instructor.services }}</td>
+                <td>{{ instructor.total_goers }}</td>
+                <td><a href="/instructors/{{instructor.id}}">Show</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination" 
+        data-page={{pagination.page}}
+        data-total={{pagination.total}}
+        data-filter={{filter}}
+    ></div>
+
+</div>
+
+<script src="../assets/js/pagination.js" async></script>
+
+{% endblock content %}
