@@ -3,11 +3,6 @@
   "version": "0.0.1",
   "description": "a simple Gym Manager App",
   "main": "server.js",
-  "scripts": {
-    "start": "npm-run-all -p nodemon browsersync",
-    "nodemon": "nodemon src/server.js",
-    "browsersync": "browser-sync start --proxy http://localhost:5000 --files 'public,src/app/views'"
-  },
   "author": "Ted Martins",
   "dependencies": {
     "express": "^4.17.1",
